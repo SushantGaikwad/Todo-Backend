@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import Todo from "../models/Todo.model";
+import path from "path";
 
 interface AuthRequest extends Request {
   user?: { id: string };
@@ -7,8 +8,8 @@ interface AuthRequest extends Request {
 
 export const getTodos = async (req: AuthRequest, res: Response) => {
   try {
-    console.log("getTodo Handler Started");
-    const todos = await Todo.find({ owner: req.user!.id });
+    console.log("getTodo Handler Started : ", req.user?.id);
+    const todos = await Todo.find({ owner: req.user!.id }).populate("owner");
     res.json(todos);
   } catch (error) {
     console.error("Error in getTodos :", error);

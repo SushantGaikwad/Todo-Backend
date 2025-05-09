@@ -52,6 +52,7 @@ export const login = async (req: Request, res: Response) => {
 
 export const logout = async (req: Request, res: Response) => {
   const refreshToken = req.cookies.refreshToken;
+  console.log(">>> Logout  refreshToken :", refreshToken);
   if (refreshToken) {
     try {
       const decoded = jwt.verify(
@@ -61,7 +62,7 @@ export const logout = async (req: Request, res: Response) => {
       const expiresAt = new Date(decoded.exp * 1000);
       await TokenBlacklist.create({ token: refreshToken, expiresAt });
     } catch (error) {
-      console.error('>>> invalid token: ', error);
+      console.error(">>> invalid token: ", error);
     }
   }
   res.clearCookie("refreshToken");
