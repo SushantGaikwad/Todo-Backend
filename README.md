@@ -16,8 +16,7 @@ A full-stack To-Do List application built with React, Express.js, MongoDB, and T
 - npm
 
 ## Setup
-
-### Backend
-2. Install dependencies:
-   ```bash
-   npm install
+1. Clone this Repository
+2. Install Dependencies -> npm install
+3. Create .env file you can copy values from .env.example file and replace with you own data
+4. Start the server -> npm run dev
