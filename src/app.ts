@@ -6,7 +6,7 @@ import authRoutes from "./routes/authRoutes";
 import todoRoutes from "./routes/todoRoutes";
 import { errorMiddleware } from "./middleware/errorMiddleware";
 import dotenv from "dotenv";
-
+import testRoutes from "./routes/testRoutes";
 dotenv.config();
 
 const app = express();
@@ -23,6 +23,7 @@ app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/todos", todoRoutes);
+app.use("/api/test", testRoutes);
 
 app.use(errorMiddleware);
 
